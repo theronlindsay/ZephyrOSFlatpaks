@@ -21,6 +21,11 @@ jobs:
       with:
         gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
 
+    - name: Install SDK Extensions
+      run: |
+        flatpak install -y flathub org.freedesktop.Sdk.Extension.node20//48
+        flatpak install -y flathub org.freedesktop.Sdk.Extension.typescript//48
+
     - name: Build and Deploy
       uses: andyholmes/flatter@v1
       with:
