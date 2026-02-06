@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=ZephyrOS Hello
+Exec=buzz.zephyros.hello
+Icon=buzz.zephyros.hello
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true
+DBusActivatable=true

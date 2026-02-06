@@ -1,0 +1,38 @@
+name: Build and Deploy Flatpak
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  flatpak:
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-48 # Use a base suited for your app
+      options: --privileged
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Build and Deploy
+      uses: andyholmes/flatter@v1
+      with:
+        files: |
+          buzz.zephyros.hello.json
+        gpg-sign: ${{ secrets.GPG_PRIVATE_KEY }}
+        upload-pages-artifact: true # Prepares the repo for GitHub Pages
+        
+  deploy:
+    needs: flatpak
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

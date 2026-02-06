@@ -1,0 +1,8 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/buzz.zephyros.hello.desktop.in
+data/buzz.zephyros.hello.metainfo.xml.in
+data/buzz.zephyros.hello.gschema.xml
+src/main.js
+src/window.js
+src/window.ui

@@ -1,0 +1,97 @@
+/* window.js
+ *
+ * Copyright 2026 Theron
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
+import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
+import Gio from 'gi://Gio';
+import Adw from 'gi://Adw';
+
+export const ZephyroshelloWindow = GObject.registerClass({
+    GTypeName: 'ZephyroshelloWindow',
+    Template: 'resource:///buzz/zephyros/hello/window.ui',
+    InternalChildren: ['label'],
+    InternalChildren: ['hibernate']
+}, class ZephyroshelloWindow extends Adw.ApplicationWindow {
+
+
+    _init(application) {
+        super._init({ application });
+
+        // Create the action 'hibernate'
+        const action = new Gio.SimpleAction({ name: 'hibernate' });
+
+        // Tell it what function to run when triggered
+        action.connect('activate', () => this._onHibernate());
+
+        // Add the action to the window
+        this.add_action(action);
+    }
+
+
+    _onHibernate() {
+        // The command logic goes here
+        console.log("Attempting to setup hibernate...");
+        this._hibernate.label = "Setting up...";
+        this._hibernate.sensitive = false; // Prevent double-clicks while running
+
+        // 1. Prepare the command (pkexec for root permission)
+        // We add 'flatpak-spawn' and '--host' to the start of the command
+        let argv = ['flatpak-spawn', '--host', 'pkexec', 'sh', '-c',
+                    'chmod +x /usr/local/sbin/setupHibernate.sh && /usr/local/sbin/setupHibernate.sh'
+                    ];
+
+        // 2. Launch it
+        let launcher = new Gio.SubprocessLauncher({
+            flags: Gio.SubprocessFlags.NONE
+        });
+
+        try {
+
+            let launcher = new Gio.SubprocessLauncher({
+                flags: Gio.SubprocessFlags.NONE
+            });
+
+            let process = launcher.spawnv(argv);
+
+            // Optional: Notify user command was sent
+            process.wait_check_async(null, (proc, result) => {
+                try {
+                    if (proc.wait_check_finish(result)) {
+                        // --- SUCCESS STATE ---
+                        this._hibernate.label = "Setup Complete ✅";
+                        this._hibernate.remove_css_class('suggested-action'); // Remove blue color
+                        // Button remains insensitive (unclickable)
+                    }
+                } catch (e) {
+                    // --- ERROR STATE ---
+                    console.error("Failed: " + e.message);
+                    this._hibernate.label = "Setup Failed ❌";
+                    this._hibernate.add_css_class('destructive-action'); // Turn red
+                    this._hibernate.sensitive = true; // Let them try again
+                }
+            });
+
+        } catch (e) {
+            console.error("Failed to launch pkexec: " + e.message);
+            this._hibernate.sensitive = true; // Re-enable if launch failed completely
+        }
+    }
+});
+
