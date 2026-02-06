@@ -37,8 +37,8 @@
             "buildsystem" : "meson",
             "sources" : [
                 {
-                    "type" : "git",
-                    "url" : "file:///home/theron/Projects"
+                    "type" : "dir",
+                    "path" : "."
                 }
             ]
         }
