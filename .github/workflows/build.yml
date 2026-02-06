@@ -1,16 +1,13 @@
 name: Build and Deploy Flatpak
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
   flatpak:
     runs-on: ubuntu-latest
-    container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-48 # Use a base suited for your app
-      options: --privileged
-    
+
     steps:
     - name: Checkout
       uses: actions/checkout@v4
