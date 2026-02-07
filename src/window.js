@@ -32,7 +32,10 @@ export const ZephyroshelloWindow = GObject.registerClass({
 
 
     _init(application) {
-        super._init({ application });
+        super._init({ 
+            application,
+            icon_name: 'buzz.zephyros.hello'
+        });
 
         // Create the action 'hibernate'
         const action = new Gio.SimpleAction({ name: 'hibernate' });

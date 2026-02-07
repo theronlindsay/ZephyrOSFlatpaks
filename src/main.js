@@ -21,6 +21,7 @@
 import GObject from 'gi://GObject';
 import Gio from 'gi://Gio';
 import Gtk from 'gi://Gtk?version=4.0';
+import Gdk from 'gi://Gdk?version=4.0';
 import Adw from 'gi://Adw?version=1';
 
 import { ZephyroshelloWindow } from './window.js';
@@ -62,6 +63,14 @@ export const ZephyroshelloApplication = GObject.registerClass(
                 aboutDialog.present(this.active_window);
             });
             this.add_action(show_about_action);
+        }
+
+        vfunc_startup() {
+            super.vfunc_startup();
+
+            // Register icons from GResource
+            const iconTheme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default());
+            iconTheme.add_resource_path('/buzz/zephyros/hello/icons');
         }
 
         vfunc_activate() {
