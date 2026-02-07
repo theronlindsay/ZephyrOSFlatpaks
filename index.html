@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZephyrOS Hello - Flatpak Repository</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 { color: #333; }
+        code {
+            background: #f4f4f4;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        a { color: #0066cc; }
+    </style>
+</head>
+<body>
+    <h1>ZephyrOS Hello</h1>
+    <p>This is a Flatpak repository for ZephyrOS Hello.</p>
+    
+    <h2>Installation</h2>
+    <p>Add this repository to your system:</p>
+    <pre><code>flatpak remote-add --if-not-exists zephyros https://repo.zephyros.buzz/index.flatpakrepo</code></pre>
+    
+    <p>Then install the application:</p>
+    <pre><code>flatpak install zephyros buzz.zephyros.hello</code></pre>
+    
+    <h2>Links</h2>
+    <ul>
+        <li><a href="index.flatpakrepo">Add Repository (.flatpakrepo)</a></li>
+        <li><a href="https://github.com/theronlindsay/ZephyrOSHello">Source Code</a></li>
+    </ul>
+</body>
+</html>
