@@ -45,6 +45,7 @@ jobs:
         with:
           files: |
             buzz.zephyros.hello.json
+            buzz.zephyros.treetrimmer.json
           flatpak-builder-args: |
             --install-deps-from=flathub
           arch: ${{ matrix.arch }}

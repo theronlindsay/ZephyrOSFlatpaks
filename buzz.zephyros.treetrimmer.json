@@ -1,0 +1,28 @@
+{
+  "id": "buzz.zephyros.treetrimmer",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "48",
+  "sdk": "org.gnome.Sdk",
+  "command": "buzz.zephyros.treetrimmer",
+  "finish-args": [
+    "--share=network",
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--device=dri",
+    "--talk-name=org.freedesktop.Flatpak"
+  ],
+  "modules": [
+    {
+      "name": "treetrimmer",
+      "buildsystem": "meson",
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/theronlindsay/TreeTrimmer.git",
+          "branch": "main"
+        }
+      ]
+    }
+  ]
+}
