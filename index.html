@@ -3,45 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZephyrOS Hello - Flatpak Repository</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            line-height: 1.6;
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>ZephyrOS Flatpaks - Flatpak Repository</title>
+    <meta name="description" content="Discover and install premium Flatpak applications from the ZephyrOS repository, including ZephyrOS Hello and Tree Trimmer for Fedora Atomic systems.">
+    <meta name="keywords" content="ZephyrOS, Flatpak, Flatpak repo, rpm-ostree, Tree Trimmer, Fedora Atomic, Linux, GNOME">
+    <meta name="author" content="Theron Lindsay">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://repo.zephyros.buzz/">
+    <meta property="og:title" content="ZephyrOS Flatpaks - Flatpak Repository">
+    <meta property="og:description" content="Discover and install premium Flatpak applications from the ZephyrOS repository, including ZephyrOS Hello and Tree Trimmer.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="ZephyrOS Flatpaks - Flatpak Repository">
+    <meta property="twitter:description" content="Discover and install premium Flatpak applications from the ZephyrOS repository, including ZephyrOS Hello and Tree Trimmer.">
+
+    <!-- Stylesheets & Fonts -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/buzz.zephyros.hello.svg">
+
+    <!-- FOUC Prevention Script -->
+    <meta name="color-scheme" content="light dark">
+    <script>
+        {
+            const colorScheme = localStorage.getItem("color-scheme");
+            if (colorScheme) {
+                document.querySelector('meta[name="color-scheme"]').content = colorScheme;
+            }
         }
-        h1 { color: #333; }
-        code {
-            background: #f4f4f4;
-            padding: 2px 8px;
-            border-radius: 4px;
-        }
-        pre {
-            background: #f4f4f4;
-            padding: 15px;
-            border-radius: 8px;
-            overflow-x: auto;
-        }
-        a { color: #0066cc; }
-    </style>
+    </script>
 </head>
 <body>
-    <h1>ZephyrOS Hello</h1>
-    <p>This is a Flatpak repository for ZephyrOS Hello.</p>
-    
-    <h2>Installation</h2>
-    <p>Add this repository to your system:</p>
-    <pre><code>flatpak remote-add --if-not-exists zephyros https://repo.zephyros.buzz/index.flatpakrepo</code></pre>
-    
-    <p>Then install the application:</p>
-    <pre><code>flatpak install zephyros buzz.zephyros.hello</code></pre>
-    
-    <h2>Links</h2>
-    <ul>
-        <li><a href="index.flatpakrepo">Add Repository (.flatpakrepo)</a></li>
-        <li><a href="https://github.com/theronlindsay/ZephyrOSHello">Source Code</a></li>
-    </ul>
+    <!-- Background glow animations -->
+    <div class="glow-effect" aria-hidden="true"></div>
+    <div class="glow-effect-2" aria-hidden="true"></div>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="repo-logo-container">
+                <img src="assets/ZephyrLogo.png" alt="ZephyrOS Logo" class="repo-logo-img" />
+            </div>
+            <h1>flatpaks</h1>
+            <p>A curated Flatpak repository bringing system tools and utilities to ZephyrOS and other Fedora Atomic-style Linux distributions.</p>
+            
+            <div class="quick-links">
+                <a href="index.flatpakrepo" class="btn-secondary" id="btn-add-repo-file">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+                    </svg>
+                    Add Repository File
+                </a>
+                <a href="https://github.com/theronlindsay/ZephyrOSFlatpaks" target="_blank" rel="noopener" class="btn-secondary" id="btn-repo-github">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                    </svg>
+                    View Repo GitHub
+                </a>
+            </div>
+        </header>
+
+        <!-- Setup instructions section -->
+        <section class="setup-card">
+            <h2 class="card-title">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                </svg>
+                1. Enable ZephyrOS Repository
+            </h2>
+            <p>To access the flatpaks, add the ZephyrOS Flatpak remote repo to your Linux system configuration by running the command below in your terminal:</p>
+            <div class="terminal-block">
+                <code>flatpak remote-add --if-not-exists zephyros https://repo.zephyros.buzz/index.flatpakrepo</code>
+                <button class="copy-btn" id="copy-repo-cmd" data-clipboard="flatpak remote-add --if-not-exists zephyros https://repo.zephyros.buzz/index.flatpakrepo">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                    </svg>
+                    <span>Copy</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Application Showcase section -->
+        <section>
+            <h2 class="section-heading">2. Available Applications</h2>
+            
+            <div class="app-grid">
+                <!-- App 1: ZephyrOS Hello -->
+                <article class="app-card">
+                    <div class="app-card-header">
+                        <div class="app-icon-wrapper">
+                            <img src="assets/buzz.zephyros.hello.svg" alt="ZephyrOS Hello Icon" class="app-icon" loading="lazy" />
+                        </div>
+                        <div class="app-meta">
+                            <h3>ZephyrOS Hello</h3>
+                            <span class="app-id">buzz.zephyros.hello</span>
+                        </div>
+                    </div>
+                    
+                    <p class="app-desc">An elegant and lightweight welcome utility and system dashboard crafted for ZephyrOS, welcoming users and presenting system information in a beautiful user interface.</p>
+                    
+                    <h4 class="app-instructions-label">Installation Command</h4>
+                    <div class="terminal-block">
+                        <code>flatpak install zephyros buzz.zephyros.hello</code>
+                        <button class="copy-btn" id="copy-app-hello" data-clipboard="flatpak install zephyros buzz.zephyros.hello">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                            </svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+
+                    <div class="app-links">
+                        <a href="https://github.com/theronlindsay/ZephyrOSHello" target="_blank" rel="noopener" class="app-link">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                            Source Code
+                        </a>
+                    </div>
+                </article>
+
+                <!-- App 2: Tree Trimmer -->
+                <article class="app-card">
+                    <div class="app-card-header">
+                        <div class="app-icon-wrapper">
+                            <img src="assets/buzz.zephyros.treetrimmer.svg" alt="Tree Trimmer Icon" class="app-icon" loading="lazy" />
+                        </div>
+                        <div class="app-meta">
+                            <h3>Tree Trimmer</h3>
+                            <span class="app-id">buzz.zephyros.treetrimmer</span>
+                        </div>
+                    </div>
+                    
+                    <p class="app-desc">A premium native GTK4 &amp; Libadwaita utility built with Python, designed for managing Fedora Atomic Workstation setups. Easily search packages, layers, RPMs, and perform OSTree updates.</p>
+                    
+                    <h4 class="app-instructions-label">Installation Command</h4>
+                    <div class="terminal-block">
+                        <code>flatpak install zephyros buzz.zephyros.treetrimmer</code>
+                        <button class="copy-btn" id="copy-app-treetrimmer" data-clipboard="flatpak install zephyros buzz.zephyros.treetrimmer">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
+                            </svg>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+
+                    <div class="app-links">
+                        <a href="https://github.com/theronlindsay/TreeTrimmer" target="_blank" rel="noopener" class="app-link">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.137 20.162 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                            Source Code
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <a href="https://github.com/theronlindsay" target="_blank" rel="noopener">Theron Lindsay</a>. Built for <a href="https://github.com/theronlindsay/ZephyrOS" target="_blank" rel="noopener">ZephyrOS</a> flatpaks ecosystem.</p>
+    </footer>
+
+    <!-- Copy to Clipboard Logic with premium feedback micro-animations -->
+    <script>
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const textToCopy = btn.getAttribute('data-clipboard');
+                const btnText = btn.querySelector('span');
+                const btnIcon = btn.querySelector('svg');
+                
+                try {
+                    await navigator.clipboard.writeText(textToCopy);
+                    
+                    // Visual feedback
+                    btn.style.background = '#10b981'; // Green accent
+                    btn.style.borderColor = '#10b981';
+                    btn.style.color = '#ffffff';
+                    btnText.textContent = 'Copied!';
+                    
+                    // Success SVG Icon
+                    const originalSvg = btnIcon.innerHTML;
+                    btnIcon.innerHTML = '<path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/>';
+                    
+                    setTimeout(() => {
+                        btn.style.background = '';
+                        btn.style.borderColor = '';
+                        btn.style.color = '';
+                        btnText.textContent = 'Copy';
+                        btnIcon.innerHTML = originalSvg;
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy: ', err);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
